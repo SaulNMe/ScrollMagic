@@ -1,0 +1,92 @@
+.active {
+	background-color: #307FB5;
+	color: white; 
+}
+
+
+ul {
+	position: fixed;
+	top: 30;
+	left: 30;
+	list-style: none;
+	display: block;
+	align-content: center;
+}
+li {
+	float: left;
+	margin-right: 10px;
+}
+#heigh1, #heigh2, #heigh3, #heigh4{
+	float: left;
+} 
+#animate1 {
+	transition: transform 0.3s ease-out;
+	background-color: red;
+	width: 10%;
+	color: white;
+	height: 50px;
+	align-content: center;
+	text-align: center;
+}
+#animate2 {
+	transition: background-color 0.3s;
+	width: 10%;
+	color: white;
+	background-color: orange;
+	height: 50px;
+}
+#trigger1 {
+	display: flex;
+	width: 100%;
+	align-items: center;
+	justify-content: center;
+}
+#trigger2 {
+	text-align: center;
+	width: 100%;
+	align-content: center;
+}
+#trigger3{
+	align-items: center;
+	widows: 100%;
+	display: flex;
+	justify-content: center
+}
+.fish {
+	min-width: 1000px;
+	border-radius: 20px;
+	background: white;
+}
+
+.box2 {
+	height: 100px;
+}
+
+.zap {
+	transform: scale(2.5, 0);
+}
+.saeko_logo_r{
+	stroke-linecap: round; 
+	stroke-linejoin: round; 
+	stroke-dasharray: 23px; 
+	stroke-dashoffset: 23px;
+	fill: transparent;
+}
+.saeko_logo_dot{
+	stroke-linecap: round; 
+	stroke-linejoin: round; 
+	stroke-dasharray: 44px; 
+	stroke-dashoffset: 44px;
+	fill: transparent;
+}
+.saeko_logo_main{
+	stroke-linecap: round; 
+	stroke-linejoin: round; 
+	stroke-dasharray: 1009.23px; 
+	stroke-dashoffset: 1009.23px;
+	fill: white;
+	transition: fill 2s ease-in;
+}
+.filling_saeko_main{
+	fill: #33629c;
+}
