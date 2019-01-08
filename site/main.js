@@ -130,7 +130,10 @@ $(function () { // wait for document ready
 			}
 		);
 
-	new ScrollMagic.Scene({triggerElement: "#trigger4"})
+	new ScrollMagic.Scene({
+			triggerElement: "#trigger4",
+			duration: 50
+		})
 		.setTween(tween2)
 		.addIndicators({name: "timeline"}) // add indicators (requires plugin)
 		.addTo(controller2);
@@ -153,7 +156,6 @@ $(function () { // wait for document ready
 	var $dot2 = $("path#dot2");
 	var $dot3 = $("path#dot3");
 
-
 	// prepare SVG
 	pathPrepare($s);
 	pathPrepare($a);
@@ -167,32 +169,144 @@ $(function () { // wait for document ready
 
 	// build tween3
 	var tween3 = new TimelineMax()
-		.add(TweenMax.to($s, 0.1, {strokeDashoffset: 0, ease:Linear.easeNone, onComplete:()=> {sceneDrawing.setClassToggle("#s", 'filling_saeko_main')}}))
-		.add(TweenMax.to($a, 0.1, {strokeDashoffset: 0, ease:Linear.easeNone})) // draw word for 0.1
-		.add(TweenMax.to($e, 0.1, {strokeDashoffset: 0, ease:Linear.easeNone})) // draw word for 0.1
-		.add(TweenMax.to($k, 0.1, {strokeDashoffset: 0, ease:Linear.easeNone})) // draw word for 0.1
-		.add(TweenMax.to($o, 0.1, {strokeDashoffset: 0, ease:Linear.easeNone}))  // draw dot for 0.1
-		.add(TweenMax.to($r, 0.2, {strokeDashoffset: 0, ease:Linear.easeNone}))  // draw dot for 0.2
-		.add(TweenMax.to($dot1, 0.1, {strokeDashoffset: 0, ease:Linear.easeNone})) // draw word for 0.1
-		.add(TweenMax.to($dot2, 0.1, {strokeDashoffset: 0, ease:Linear.easeNone})) // draw word for 0.1
-		.add(TweenMax.to($dot3, 0.1, {strokeDashoffset: 0, ease:Linear.easeNone})) // draw word for 0.1
-		.add(TweenMax.to("path", 1.1, {stroke: "#33629c", ease:Linear.easeNone}), 0)
+		.add(TweenMax.to($s, 0.1, {stroke: "#fff", strokeDashoffset: 0, ease:Linear.easeNone}))
+		.add(TweenMax.to($a, 0.1, {stroke: "#fff", strokeDashoffset: 0, ease:Linear.easeNone})) // draw word for 0.1
+		.add(TweenMax.to($e, 0.1, {stroke: "#fff", strokeDashoffset: 0, ease:Linear.easeNone})) // draw word for 0.1
+		.add(TweenMax.to($k, 0.1, {stroke: "#fff", strokeDashoffset: 0, ease:Linear.easeNone})) // draw word for 0.1
+		.add(TweenMax.to($o, 0.1, {stroke: "#fff", strokeDashoffset: 0, ease:Linear.easeNone}))  // draw dot for 0.1
+		.add(TweenMax.to($r, 0.2, {stroke: "#fff", strokeDashoffset: 0, ease:Linear.easeNone}))  // draw dot for 0.2
+		.add(TweenMax.to($dot2, 0.1, {stroke: "#BF209F", strokeDashoffset: 0, ease:Linear.easeNone})) // draw word for 0.1
+		.add(TweenMax.to($dot1, 0.1, {stroke: "#2D9CDB", strokeDashoffset: 0, ease:Linear.easeNone})) // draw word for 0.1
+		.add(TweenMax.to($dot3, 0.1, {stroke: "#50C53A", strokeDashoffset: 0, ease:Linear.easeNone, onComplete: function () {
+			new ScrollMagic.Scene({
+				triggerElement: "#k",
+			})
+			.setClassToggle("#s, #a, #e, #k, #o, #r", "filling_saeko_main")
+			.addTo(controller2);
+
+			new ScrollMagic.Scene({
+				triggerElement: "#k",
+			})
+			.setClassToggle("#dot1", "fill_blue")
+			.addTo(controller2);
+
+			new ScrollMagic.Scene({
+				triggerElement: "#k",
+			})
+			.setClassToggle("#dot2", "fill_purple")
+			.addTo(controller2);
+
+			new ScrollMagic.Scene({
+				triggerElement: "#k",
+			})
+			.setClassToggle("#dot3", "fill_green")
+			.addTo(controller2);
+		}})) // draw word for 0.1
+		.add(TweenMax.to("path", 1.1, {ease:Linear.easeNone}))
 	// build scene
-	let sceneDrawing = new ScrollMagic.Scene({
+	var sceneDrawing = new ScrollMagic.Scene({
 			triggerElement: "#trigger5", 
-			duration: 300, 
-			tweenChanges: true
+			duration: 200, 
+			tweenChanges: false
 		})
 		.setTween(tween3)
 		.addIndicators({name: "drawing words"}) // add indicators (requires plugin)
 		.addTo(controller2);
-
-	/*new ScrollMagic.Scene({
-			triggerElement: "#trigger5",
-			
-		})
-		.setClassToggle("#a", 'filling_saeko_main')
-		.addIndicators({name: "filling words"})
-		.addTo(controller2);*/
 	//end Scene drawing saeko
+
+	//init Path Animation
+	let flightpath = {
+		entry: {
+			curviness: 1.25,
+			autoRotate: true,
+			values: [
+				{x: 100, y: -20},
+				{x: 300, y: 10}
+			]
+		},
+		looping: {
+			curviness: 1.25,
+			autoRotate: true,
+			values: [
+				{x: 510, y: 60},
+				{x: 620, y: -60},
+				{x: 500, y: -100},
+				{x: 380, y: 20},
+				{x: 500, y: 60},
+				{x: 580, y: 20},
+				{x: 620, y: 15}
+			]
+		},
+		leave: {
+			curviness: 1.25,
+			autoRotate: true,
+			values: [
+				{x: 600, y: 20},
+				{x: 800 , y: 130},
+				{x: $(window).width() + 300, y: -100}
+			]
+		}
+	};
+	var tween4 = new TimelineMax()
+		.add(TweenMax.to($("#plane"), 1.2, {css: {bezier:flightpath.entry}, ease:Power1.easeInOut}))
+		.add(TweenMax.to($("#plane"), 2, {css: {bezier:flightpath.looping}, ease:Power1.easeInOut}))
+		.add(TweenMax.to($("#plane"), 1, {css: {bezier:flightpath.leave}, ease:Power1.easeInOut}))
+	
+	let pathAnimation = new ScrollMagic.Scene({
+		triggerElement: "#trigger6",
+		duration: 300,
+		offset: 100
+	})
+	.setPin("#target")
+	.setTween(tween4)
+	.addIndicators()
+	.addTo(controller2)
+	//end Path Animation
+
+	//init Image Sequence
+
+	let images = [
+		"Walama/05.jpg",
+		"Walama/06.jpg",
+		"Walama/07.jpg",
+		"Walama/08.jpg",
+		"Walama/09.jpg",
+		"Walama/10.jpg",
+		"Walama/11.jpg",
+		"Walama/12.jpg",
+		"Walama/13.jpg",
+		"Walama/14.jpg",
+		"Walama/15.jpg",
+		"Walama/16.jpg",
+		"Walama/17.jpg",
+		"Walama/18.jpg",
+		"Walama/19.jpg",
+		"Walama/20.jpg",
+	]
+	var obj =  {curImg: 0}
+	var tween5= TweenMax.to(obj, 0.5,
+		{
+			curImg: images.length-1,
+			roundProps: "curImg",
+			repeat: 2,
+			immediateRender: true,
+			ease: Linear.easeNone,
+			onUpdate: function () {
+				$("#myimg").attr("src", images[obj.curImg]);
+			}
+		}
+	);
+	let walamaScene = new ScrollMagic.Scene({
+		triggerElement: "#trigger7",
+		duration: 300
+	})
+	.setTween(tween5)
+	.addIndicators({name: "Walama!!!"})
+	.addTo(controller2);
+	
+	$("form.move input[name=duration]:radio").change(function () {
+		walamaScene.duration($(this).val())
+	})
+
+	//end Image Sequence
 });

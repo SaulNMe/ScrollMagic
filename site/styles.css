@@ -49,11 +49,15 @@ li {
 	width: 100%;
 	align-content: center;
 }
-#trigger3{
+#trigger3 {
 	align-items: center;
 	widows: 100%;
 	display: flex;
 	justify-content: center
+}
+#trigger5 {
+	width: 100%;
+	background: #1E88E5;
 }
 .fish {
 	min-width: 1000px;
@@ -69,11 +73,13 @@ li {
 	transform: scale(2.5, 0);
 }
 .saeko_logo_r{
+
 	stroke-linecap: round; 
 	stroke-linejoin: round; 
 	stroke-dasharray: 23px; 
 	stroke-dashoffset: 23px;
 	fill: transparent;
+	transition: fill 0.3s ease-in;
 }
 .saeko_logo_dot{
 	stroke-linecap: round; 
@@ -81,15 +87,30 @@ li {
 	stroke-dasharray: 44px; 
 	stroke-dashoffset: 44px;
 	fill: transparent;
+	transition: fill 0.3s ease-in;
 }
 .saeko_logo_main{
 	stroke-linecap: round; 
 	stroke-linejoin: round; 
 	stroke-dasharray: 1009.23px; 
 	stroke-dashoffset: 1009.23px;
-	fill: white;
-	transition: fill 1s ease-in;
+	fill: transparent;
+	transition: fill 0.3s ease-in;
 }
+
 .filling_saeko_main{
-	fill: #33629c;
+	fill: white;
 }
+
+.fill_purple {
+	fill: #BF209F;
+}
+
+.fill_blue {
+	fill: #2D9CDB;
+}
+
+.fill_green {
+	fill: #50C53A;
+}
+
