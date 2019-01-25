@@ -52,7 +52,6 @@ $(function () { // wait for document ready
 	//end Scene zap animation
 
 	//init Scene change color
-	var s_saeko = document.getElementById("s");
 	var animateElem = document.getElementById("animate2");
 	new ScrollMagic.Scene({
 		triggerElement: '#trigger2',
@@ -288,7 +287,7 @@ $(function () { // wait for document ready
 		{
 			curImg: images.length-1,
 			roundProps: "curImg",
-			repeat: 2,
+			repeat: 3,
 			immediateRender: true,
 			ease: Linear.easeNone,
 			onUpdate: function () {
@@ -303,10 +302,23 @@ $(function () { // wait for document ready
 	.setTween(tween5)
 	.addIndicators({name: "Walama!!!"})
 	.addTo(controller2);
+	//end Image Sequence
 	
 	$("form.move input[name=duration]:radio").change(function () {
 		walamaScene.duration($(this).val())
 	})
 
-	//end Image Sequence
+	//init simple tweening
+	new ScrollMagic.Scene({
+		triggerElement: "#trigger8"
+	})
+	.setTween("#animate5", 0.5, {backgroundColor: "black", scale: 2.5, color: "white", borderRadius: 60})
+	.addIndicators({name: "simple tweening"})
+	.addTo(controller2);
+	//end simple tweening
+
+	//init With Velocity
+	
+	//end With Velocity
+
 });
